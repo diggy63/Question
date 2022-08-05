@@ -12,7 +12,7 @@ export default function FooterComponent() {
       <Container>
         <Content className="has-text-centered">
           <p>
-            {`Copyright Ⓒ ${year} MERN Boilerplate. All Rights Reserved.`}
+            {`Please tell me this will change`}
           </p>
         </Content>
       </Container>
