@@ -11,6 +11,7 @@ const configPassport  = require('./passport/config');
 const assetFolder  = path.resolve(__dirname, '../dist/');
 const port         = process.env.PORT;
 const app          = express();
+const db           = process.env.DATABASE_URL
 
 app.use(express.static(assetFolder));
 app.use(bodyParser.json());
