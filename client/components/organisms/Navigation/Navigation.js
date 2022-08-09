@@ -14,7 +14,7 @@ import UserDropdown from '_molecules/UserDropdown';
 
 export default function Navigation({ pathname }) {
   const { user } = useSelector(R.pick(['user']));
-  console.log(pathname.length)
+  
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
   const [open, setOpen] = useState(false);

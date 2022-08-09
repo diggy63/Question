@@ -11,7 +11,6 @@ export const attemptGetItems = () => dispatch =>
     .then(data => {
       const items = R.map(item =>
         R.omit(['Id'], R.assoc('id', item._id, snakeToCamelCase(item))), data.items);
-        console.log(items)
         dispatch(setItems(items));
         return data.items;
     })

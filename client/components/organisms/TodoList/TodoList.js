@@ -6,7 +6,6 @@ import Todo from '_molecules/Todo';
 
 export default function TodoList() {
   const { todos } = useSelector(R.pick(['todos']));
-  console.log(todos)
 
   return (
     <ul className="todo-list">
