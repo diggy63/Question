@@ -39,7 +39,7 @@ export default function Navigation({ pathname }) {
     : R.slice(0, 10, pathname) === '/settings/';
 
   return (
-    <Navbar fixed="top" shadow>
+    <Navbar fixed="top" shadow transparent>
       <Container>
         <Navbar.Brand>
           <Navbar.Item
@@ -47,7 +47,7 @@ export default function Navigation({ pathname }) {
             aria-label="main navigation"
             component={Link}
           >
-            <Image size="128x128">
+            <Image size="24x24">
                   <Image.Content
                     src='/images/Seislogonew2.png'
                   />
