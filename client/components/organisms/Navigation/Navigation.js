@@ -47,9 +47,11 @@ export default function Navigation({ pathname }) {
             aria-label="main navigation"
             component={Link}
           >
-            <Title className="logo" size="3">
-              Sebi's Bistro
-            </Title>
+            <Image size="128x128">
+                  <Image.Content
+                    src='/images/Seislogonew2.png'
+                  />
+                </Image>
           </Navbar.Item>
           <div className="navbar-brand-right">
             {!auth && (
