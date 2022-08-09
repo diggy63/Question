@@ -14,6 +14,7 @@ import UserDropdown from '_molecules/UserDropdown';
 
 export default function Navigation({ pathname }) {
   const { user } = useSelector(R.pick(['user']));
+  console.log(pathname.length)
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
   const [open, setOpen] = useState(false);
@@ -37,9 +38,13 @@ export default function Navigation({ pathname }) {
   const isSettings = (pathname.length === 9)
     ? pathname === '/settings'
     : R.slice(0, 10, pathname) === '/settings/';
+    
+  const isCaterItems = (pathname.length === 14)
+    ? pathname === '/settings'
+    : R.slice(0, 15, pathname) === '/addcateringitems/';
 
   return (
-    <Navbar fixed="top" shadow transparent>
+    <Navbar fixed="top" shadow transparent size="large">
       <Container>
         <Navbar.Brand>
           <Navbar.Item
@@ -47,7 +52,7 @@ export default function Navigation({ pathname }) {
             aria-label="main navigation"
             component={Link}
           >
-            <Image size="24x24">
+            <Image size="128x128">
                   <Image.Content
                     src='/images/Seislogonew2.png'
                   />
@@ -104,7 +109,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="6">Home</Title>
+                <Title size="20">Home</Title>
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
@@ -113,7 +118,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="6">
+                <Title size="20">
                   Todo
                 </Title>
               </Navbar.Item>
@@ -124,8 +129,19 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="6">
+                <Title size="20">
                   Settings
+                </Title>
+              </Navbar.Item>
+              <Navbar.Item
+                className="is-hidden-mobile"
+                to="/addcateringitems"
+                active={isCaterItems}
+                tab
+                component={Link}
+              >
+                <Title size="20">
+                 Add Catering Items
                 </Title>
               </Navbar.Item>
             </Navbar.Start>
