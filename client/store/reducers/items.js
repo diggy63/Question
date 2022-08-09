@@ -31,6 +31,8 @@ export default function items(state = [], action) {
   switch (action.type) {
     case SET_ITEMS:
       return update(state, { $set: action.items });
+    case ADD_ITEM:
+      return update(state, { $push: [item(undefined, action)] });
     default:
       return state;
   }
