@@ -18,7 +18,6 @@ router.get('/', requireAuth, (req, res) => {
 
 router.post('/', requireAuth, (req, res) => {
   req.body.user = req.user.id;
-
   const newTodo = Todo(req.body);
 
   newTodo.save((err, savedTodo) => {

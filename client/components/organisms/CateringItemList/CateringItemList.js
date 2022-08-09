@@ -2,15 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import R from 'ramda';
 
-import Todo from '_molecules/Todo';
+import Item from '_molecules/Item';
 
 export default function TodoList() {
-  const { todos } = useSelector(R.pick(['todos']));
-  console.log(todos)
-
+  const { items } = useSelector(R.pick(['items']));
+  console.log(items)
   return (
     <ul className="todo-list">
-      {R.reverse(todos).map(todo => <Todo key={todo.id} {...todo} />)}
+        {R.reverse(items).map(item => <Item key={item.id} {...item} />)}
     </ul>
   );
 }

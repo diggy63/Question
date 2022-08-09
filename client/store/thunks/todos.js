@@ -11,7 +11,6 @@ export const attemptGetTodos = () => dispatch =>
     .then(data => {
       const todos = R.map(todo =>
         R.omit(['Id'], R.assoc('id', todo._id, snakeToCamelCase(todo))), data.todos);
-
       dispatch(setTodos(todos));
       return data.todos;
     })
@@ -21,7 +20,6 @@ export const attemptAddTodo = text => dispatch =>
   postTodo({ text })
     .then(data => {
       const todo = R.omit(['Id'], R.assoc('id', data.todo._id, snakeToCamelCase(data.todo)));
-
       dispatch(addTodo(todo));
       return data.user;
     })

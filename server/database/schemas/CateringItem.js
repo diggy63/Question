@@ -10,6 +10,6 @@ const catItemSchema = new Schema({
   updated_at: { type: Date },
 }, { versionKey: false });
 
-const Todo = mongoose.model('CatItem', catItemSchema);
+const CatItem = mongoose.model('CatItem', catItemSchema);
 
-module.exports = Todo;
+module.exports = CatItem;
