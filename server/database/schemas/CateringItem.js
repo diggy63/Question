@@ -6,6 +6,7 @@ const catItemSchema = new Schema({
   name: { type: String },
   description: { type: String },
   price: { type: String },
+  photoUrl: String,
   created_at: { type: Date, default: Date.now, immutable: true },
   updated_at: { type: Date },
 }, { versionKey: false });
