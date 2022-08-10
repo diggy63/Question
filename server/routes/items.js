@@ -30,5 +30,16 @@ router.post('/', requireAuth, (req, res) => {
 });
 
 
+router.delete('/', requireAuth, (req,res) =>{
+  CatItem.findByIdAndRemove(req.body.id, err => {
+    if(err){
+      res.status(400).send({message: 'Delete Items Failed', err});
+    }else {
+      console.log("delete")
+      res.send({ message: 'Item Deleted'})
+    }
+  })
+})
+
 
 

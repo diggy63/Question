@@ -1,10 +1,20 @@
 import { snakeToCamelCase } from 'json-style-converter/es5';
 import R from 'ramda';
 
-import { postItem, getItems } from '_api/items';
-import { addItem, setItems } from '_actions/items';
+import { postItem, getItems, deleteItem } from '_api/items';
+import { addItem, setItems, removeItem } from '_actions/items';
 
 import { dispatchError } from '_utils/api';
+
+export const attemptToDeleteItem = id =>  dispatch =>
+  deleteItem({id})
+    .then(data =>{
+      console.log(data)
+      dispatch(removeItem(id));
+      return  data;
+
+    })
+    .catch(dispatchError(dispatch))
 
 export const attemptGetItems = () => dispatch =>
   getItems()
@@ -20,7 +30,6 @@ export const attemptAddItem = text => dispatch =>
   postItem(text)
     .then(data => {
         const Item = R.omit(['Id'], R.assoc('id', data.item._id, snakeToCamelCase(data.item)));
-        console.log("HAHAHHHHHHHHHHHHHHHHHHHA",Item)
         dispatch(addItem(Item));
         return data.user;
     })

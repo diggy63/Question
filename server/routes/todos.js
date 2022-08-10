@@ -69,6 +69,7 @@ router.delete('/', requireAuth, (req, res) => {
     if (err) {
       res.status(400).send({ message: 'Delete todo failed', err });
     } else {
+      console.log("delete")
       res.send({ message: 'Todo successfully delete' });
     }
   });

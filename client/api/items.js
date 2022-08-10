@@ -12,3 +12,9 @@ export const getItems = () =>
     .then(handleSuccess)
     .catch(handleError);
 
+export const deleteItem = info =>
+  request.delete('/api/items')
+    .send(info)
+    .then(handleSuccess)
+    .catch(handleError);
+
