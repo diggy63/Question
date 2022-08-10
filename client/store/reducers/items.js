@@ -17,6 +17,7 @@ export function item(state = {
         name: { $set: action.name },
         price: { $set:action.price},
         description: {$set:action.description},
+        photoUrl: {$set:action.photoUrl},
         createdAt: { $set: action.createdAt },
       });
     default:

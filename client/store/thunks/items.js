@@ -30,7 +30,9 @@ export const attemptAddItem = text => dispatch =>
   postItem(text)
     .then(data => {
         const Item = R.omit(['Id'], R.assoc('id', data.item._id, snakeToCamelCase(data.item)));
+        console.log("itttttem", Item)
         dispatch(addItem(Item));
+        console.log("here")
         return data.user;
     })
     .catch(dispatchError(dispatch));
