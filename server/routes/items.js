@@ -13,6 +13,25 @@ const router   = express.Router();
 module.exports = router;
 
 
+router.put('/available', requireAuth, (req, res) => {
+  CatItem.findById(req.body.id, (err,item) =>{
+    if (err){
+      res.status(400).send({ message: 'Toggle todo failed', err });
+    }else{
+      item.available = !item.available;
+      item.save((err, savedItem) =>{
+        if (err) {
+          res.status(400).send({ message: 'Toggle todo failed', err });
+        } else {
+          res.send({ message: 'Item made available successfully', item: savedItem });
+        }
+      })
+    }
+    
+  })
+});
+
+
 router.get('/', requireAuth, (req, res) => {
   CatItem.find({}, (err, items) => {
     if (err) {
