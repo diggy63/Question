@@ -16,11 +16,11 @@ export default function Orders() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    dispatch(attemptGetItems())
-      .catch(R.identity)
-      .then(() => setLoading(false));
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(attemptGetItems())
+        .catch(R.identity)
+        .then(() => setLoading(false));
+    }, [dispatch]);
 
   return (
     <Section className="todo-section">

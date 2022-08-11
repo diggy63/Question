@@ -32,7 +32,8 @@ router.put('/available', requireAuth, (req, res) => {
 });
 
 
-router.get('/', requireAuth, (req, res) => {
+router.get('/', (req, res) => {
+  console.log("here")
   CatItem.find({}, (err, items) => {
     if (err) {
       res.status(400).send({ message: 'Get items failed', err });
