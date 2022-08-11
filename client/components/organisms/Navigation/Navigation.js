@@ -27,9 +27,9 @@ export default function Navigation({ pathname }) {
 
   const closeDropdown = () => setOpen(false);
 
-  const isHome = (pathname.length === 5)
-    ? pathname === '/home'
-    : R.slice(0, 6, pathname) === '/home/';
+  const isOrder = (pathname.length === 7)
+    ? pathname === '/orders'
+    : R.slice(0, 6, pathname) === '/orders/';
 
   const isTodo = (pathname.length === 5)
     ? pathname === '/todo'
@@ -40,7 +40,7 @@ export default function Navigation({ pathname }) {
     : R.slice(0, 10, pathname) === '/settings/';
     
   const isCaterItems = (pathname.length === 14)
-    ? pathname === '/settings'
+    ? pathname === '/addcateringitems'
     : R.slice(0, 15, pathname) === '/addcateringitems/';
 
   return (
@@ -104,12 +104,12 @@ export default function Navigation({ pathname }) {
             <Navbar.Start>
               <Navbar.Item
                 className="is-hidden-mobile"
-                to="/home"
-                active={isHome}
+                to="/orders"
+                active={isOrder}
                 tab
                 component={Link}
               >
-                <Title size="1">Home</Title>
+                <Title size="3">Shop</Title>
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
@@ -118,7 +118,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="1">
+                <Title size="3">
                   Todo
                 </Title>
               </Navbar.Item>
@@ -129,7 +129,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="1">
+                <Title size="3">
                   Settings
                 </Title>
               </Navbar.Item>
@@ -140,7 +140,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="1">
+                <Title size="3">
                  Add Catering Items
                 </Title>
               </Navbar.Item>
@@ -161,7 +161,7 @@ export default function Navigation({ pathname }) {
           <Navbar.Menu>
             <Navbar.End>
               <Navbar.Item to="/login" component={Link}>
-                <Title size="1">
+                <Title size="3">
                   Login
                 </Title>
               </Navbar.Item>
