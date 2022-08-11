@@ -109,7 +109,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="20">Home</Title>
+                <Title size="1">Home</Title>
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
@@ -118,7 +118,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="20">
+                <Title size="1">
                   Todo
                 </Title>
               </Navbar.Item>
@@ -129,7 +129,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="20">
+                <Title size="1">
                   Settings
                 </Title>
               </Navbar.Item>
@@ -140,7 +140,7 @@ export default function Navigation({ pathname }) {
                 tab
                 component={Link}
               >
-                <Title size="20">
+                <Title size="1">
                  Add Catering Items
                 </Title>
               </Navbar.Item>
@@ -161,7 +161,7 @@ export default function Navigation({ pathname }) {
           <Navbar.Menu>
             <Navbar.End>
               <Navbar.Item to="/login" component={Link}>
-                <Title size="6">
+                <Title size="1">
                   Login
                 </Title>
               </Navbar.Item>

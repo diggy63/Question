@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { File, Input, Button, Column, Columns } from "react-bulma-companion";
+import {
+  File,
+  Input,
+  Button,
+  Column,
+  Columns,
+  Section,
+  Container,
+  Box,
+  Title,
+  Textarea,
+  Field,
+  Label,
+  Control,
+} from "react-bulma-companion";
 
 import { attemptAddItem } from "_thunks/items";
 import useKeyPress from "_hooks/useKeyPress";
@@ -12,16 +26,16 @@ export default function AddTodo() {
   const [text, setText] = useState({
     name: "",
     description: "",
-    price: "",
+    price: 0.00,
   });
 
   const handleAddTodo = () => {
-    console.log(selectedFile)
+    console.log(selectedFile);
     const formD = new FormData();
-    formD.append("photo", selectedFile)
-    console.log(formD["photo"])
-    for (let fn in text){
-      formD.append(fn,text[fn])
+    formD.append("photo", selectedFile);
+    console.log(formD["photo"]);
+    for (let fn in text) {
+      formD.append(fn, text[fn]);
     }
     if (formD) {
       dispatch(attemptAddItem(formD));
@@ -40,37 +54,68 @@ export default function AddTodo() {
   }
 
   return (
-    <Columns className="add-todo" gapless>
-      <Column size="10">
-        <Input
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={text.name}
-          onChange={updateText}
-        />
-        <Input
-          type="text"
-          placeholder="Description"
-          name="description"
-          value={text.description}
-          onChange={updateText}
-        />
-        <Input
-          type="text"
-          placeholder="Price"
-          name="price"
-          value={text.price}
-          onChange={updateText}
-        />
-        <input type="file" name="photo"
-       accept="image/png, image/jpeg" onChange={updateFile}/>
-      </Column>
-      <Column size="2">
-        <Button color="success" onClick={handleAddTodo} fullwidth>
-          Add
-        </Button>
-      </Column>
-    </Columns>
+    <Box className="general-profile">
+      <Title size="3">Create New Catering Menu Items</Title>
+      <hr className="separator" />
+      <Container>
+        <Columns>
+          <Column size="2">
+            <Field>
+              <Label htmlFor="item-name" className='Label'>
+                Item Name</Label>
+              <Control>
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={text.name}
+                  onChange={updateText}
+                />
+              </Control>
+            </Field>
+          </Column>
+          <Column size="2">
+          <Field>
+              <Label htmlFor="item-name" className='Label'>
+                Price
+                </Label>
+              <Control>
+            <Input
+              placeholder="Price"
+              name="price"
+              value={text.price}
+              onChange={updateText}
+            />
+            </Control>
+            </Field>
+          </Column>
+        </Columns>
+        <Columns>
+          <Column size="4">
+            <Textarea
+              placeholder="Description"
+              name="description"
+              value={text.description}
+              onChange={updateText}
+            />
+          </Column>
+        </Columns>
+        <Columns>
+          <Column size="3">
+            <input
+              type="file"
+              name="photo"
+              accept="image/png, image/jpeg"
+              onChange={updateFile}
+            />
+          </Column>
+          <Column size="1">
+            <Button color="success" onClick={handleAddTodo} fullwidth>
+              Add
+            </Button>
+          </Column>
+        </Columns>
+      </Container>
+    </Box>
   );
 }

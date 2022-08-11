@@ -18,7 +18,7 @@ export default function item({ id, name, description, price, photoUrl }) {
         <div className="media-content">
           <div className="content">
             <p>
-              <h1>{name}</h1>
+              {name}
             </p>
             <p>Description: {description}</p>
             <p>Price: {price}</p>
