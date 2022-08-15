@@ -18,3 +18,9 @@ export const deleteItem = info =>
     .then(handleSuccess)
     .catch(handleError);
 
+export const putMakeItemAvailable = info =>
+  request.put('/api/items/available')
+  .send(info)
+  .then(handleSuccess)
+  .catch(handleError);
+

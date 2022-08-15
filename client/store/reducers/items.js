@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import R from 'ramda';
 
 import {
-  ADD_ITEM, SET_ITEMS, REMOVE_ITEM,
+  ADD_ITEM, SET_ITEMS, REMOVE_ITEM, MAKE_ITEM_AVAILABLE
 } from '_actions/items';
 
 import { LOGOUT_USER } from '_actions/user';
@@ -20,6 +20,10 @@ export function item(state = {
         photoUrl: {$set:action.photoUrl},
         createdAt: { $set: action.createdAt },
       });
+    case MAKE_ITEM_AVAILABLE:
+      return update(state, {
+        available: {$apply: x => !x}
+      });
     default:
       return state;
   }
@@ -36,6 +40,8 @@ export default function items(state = [], action) {
       return update(state, { $push: [item(undefined, action)] });
     case REMOVE_ITEM:
       return update(state, {$splice: [[index,1]]});
+    case MAKE_ITEM_AVAILABLE:
+      return update(state, updatedAtIndex)
     default:
       return state;
   }

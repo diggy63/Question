@@ -2,6 +2,7 @@
 export const ADD_ITEM = 'ADD_ITEM';
 export const SET_ITEMS = 'SET_ITEMS';
 export const REMOVE_ITEM = 'REMOVE_ITEM'
+export const MAKE_ITEM_AVAILABLE = "MAKE_ITEM_AVAILABLE"
 
 
 
@@ -22,5 +23,10 @@ export const setItems = items => ({
 
 export const removeItem = id => ({
   type: REMOVE_ITEM,
+  id,
+})
+
+export const makeItemAvailable = id => ({
+  type: MAKE_ITEM_AVAILABLE,
   id,
 })

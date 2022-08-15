@@ -15,6 +15,7 @@ import TodoPage from '_pages/TodoPage';
 import SettingsPage from '_pages/SettingsPage';
 import LostPage from '_pages/LostPage';
 import AddCatItemPage from '_pages/AddCatItemPage'
+import Orders from '_pages/Orders'
 
 import Navigation from '_organisms/Navigation';
 import Footer from '_organisms/Footer';
@@ -50,6 +51,7 @@ export default function Main({ location }) {
           <Route path="/todo" component={TodoPage} />
           <Route path="/addcateringitems" component={AddCatItemPage} />
           <Route path="/settings" component={SettingsPage} />
+          <Route path="/Orders" component={Orders} />
           <Route path="*" component={LostPage} />
         </Switch>
       </div>
