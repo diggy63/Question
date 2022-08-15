@@ -161,6 +161,9 @@ export default function Navigation({ pathname }) {
               <Navbar.Item to="/orders" component={Link}>
                 <Title size="3">Shop</Title>
               </Navbar.Item>
+              <Navbar.Item to="/catering" component={Link}>
+                <Title size="3">Catering</Title>
+              </Navbar.Item>
             </Navbar.Start>
             <Navbar.End>
               <Navbar.Item to="/login" component={Link}>

@@ -50,10 +50,8 @@ router.post('/', requireAuth, upload.single("photo"), (req, res) => {
     Key: filePath,
     Body: req.file.buffer,
   };
-  console.log(params)
 
   s3.upload(params, async function (err, data) {
-    console.log(data)
     const newItem = CatItem({ ...req.body, photoUrl: data.Location });
     newItem.save((err, savedItem) => {
       if (err) {
