@@ -17,6 +17,7 @@ import LostPage from '_pages/LostPage';
 import AddCatItemPage from '_pages/AddCatItemPage'
 import Orders from '_pages/Orders'
 import Catering from "_pages/Catering"
+import ManageCatItems from '_pages/ManageCatItems'
 
 import Navigation from '_organisms/Navigation';
 import Footer from '_organisms/Footer';
@@ -50,7 +51,8 @@ export default function Main({ location }) {
           <Route path="/register" component={RegisterPage} />
           <Route path="/home" component={HomePage} />
           <Route path="/todo" component={TodoPage} />
-          <Route path="/addcateringitems" component={AddCatItemPage} />
+          <Route path="/manageshopitems" component={AddCatItemPage} />
+          <Route path="/managecateringitems" component={ManageCatItems} />
           <Route path="/settings" component={SettingsPage} />
           <Route path="/Orders" component={Orders} />
           <Route path="/catering" component={Catering} />

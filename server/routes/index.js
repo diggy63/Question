@@ -6,6 +6,7 @@ const user         = require('./user');
 const users        = require('./users');
 const todos        = require('./todos');
 const items        = require('./items');
+const catItems     = require('./cateringitems')
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.use('/api/user', user);
 router.use('/api/users', users);
 router.use('/api/todos', todos);
 router.use('/api/items', items);
+router.use('/api/catitems', catItems);
 
 router.get('/api/tags', (req, res) => {
   res.send([

@@ -130,12 +130,21 @@ export default function Navigation({ pathname }) {
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
-                to="/addcateringitems"
+                to="/managecateringitems"
                 active={isCaterItems}
                 tab
                 component={Link}
               >
-                <Title size="3">Add Catering Items</Title>
+                <Title size="3">Manage Catering Items</Title>
+              </Navbar.Item>
+              <Navbar.Item
+                className="is-hidden-mobile"
+                to="/manageshopitems"
+                active={isCaterItems}
+                tab
+                component={Link}
+              >
+                <Title size="3">Manage Shop Items</Title>
               </Navbar.Item>
             </Navbar.Start>
             <Navbar.End>
