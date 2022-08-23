@@ -7,6 +7,8 @@ import { faReply } from '@fortawesome/free-solid-svg-icons/faReply';
 import { attemptToDeleteCateringItem, attemptToUpdateCateringItem } from "_thunks/catItems";
 
 import {
+    Columns,
+    Column,
     Button,
     Box,
     Modal,
@@ -53,10 +55,17 @@ export default function CateringItem({
     })
   }
   return (
-    <div>
-      {name} {description} {price} {category}
+    <li>
+        <Columns>
+        <Column size="2">{name}</Column>
+        <Column size="4">{description}</Column>
+        <Column size="2">{price}</Column>
+        <Column size="2">{category}</Column>
+        <Column size='2'>
       <button onClick={deleteItem}>Delete</button>
       <button onClick={toggleModal}>Update</button>
+      </Column>
+      </Columns>
       <Modal active={isModal}>
         <Modal.Background />
         <Modal.Content>
@@ -106,6 +115,6 @@ export default function CateringItem({
         </Modal.Content>
         <Modal.Close size="large" />
       </Modal>
-    </div>
+    </li>
   );
 }

@@ -33,7 +33,7 @@ export default function AddCatItemPage() {
   return !loading && (
         <Section className="todo-section">
           <Title size="1" className="has-text-centered">
-            Catering Items List
+            Catering Items List Are we here
           </Title>
           <Columns>
             <Column size="8" offset="2" className="has-text-centered">
