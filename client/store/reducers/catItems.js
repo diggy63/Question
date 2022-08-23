@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import R from 'ramda';
 
 import {
-  ADD_CATITEM, SET_CATITEMS, REMOVE_CATITEM,
+  ADD_CATITEM, SET_CATITEMS, REMOVE_CATITEM, UPDATE_CATITEM,
 } from '_actions/catItems';
 
 export function catItem(state = {
@@ -18,6 +18,13 @@ export function catItem(state = {
           category: {$set:action.category},
           createdAt: { $set: action.createdAt },
         });
+      case UPDATE_CATITEM:
+        return update(state, {
+          name: { $set: action.name },
+          price: { $set:action.price},
+          description: {$set:action.description},
+          category: {$set:action.category},
+        })
       default:
         return state;
     }
@@ -35,6 +42,8 @@ export function catItem(state = {
         return update(state, { $push: [catItem(undefined, action)] });
       case REMOVE_CATITEM:
         return update(state, {$splice: [[index,1]]})
+      case UPDATE_CATITEM:
+        return update(state, updatedAtIndex);
       default:
         return state;
     }

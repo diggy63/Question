@@ -20,3 +20,9 @@ export const deleteCatItem = info =>
       .then(handleSuccess)
       .catch(handleError);
 
+export const updateCatItem = info =>
+    request.put('/api/catitems')
+      .send(info)
+      .then(handleSuccess)
+      .catch(handleError);
+

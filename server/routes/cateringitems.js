@@ -41,3 +41,23 @@ router.delete('/', requireAuth, (req,res) => {
       }
     })
 })
+
+router.put('/', requireAuth, (req,res) => {
+  CatMenuItems.findById(req.body.id, (err,item) =>{
+    if(err){
+      res.status(400).send({message: 'Catering Item Not found', err});
+    }else {
+      item.name = req.body.name
+      item.description = req.body.description
+      item.price = req.body.price
+      item.category = req.body.category
+      item.save((err,savedItem) => {
+        if (err) {
+          res.status(400).send({ message: 'item failed to change', err });
+        } else {
+          res.send({ message: 'Item changed', item: savedItem });
+        }
+      })
+    }
+  })
+})

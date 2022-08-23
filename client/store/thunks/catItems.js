@@ -1,8 +1,8 @@
 import { snakeToCamelCase } from 'json-style-converter/es5';
 import R, { converge } from 'ramda';
 
-import { postCatItem, getCatItems, deleteCatItem } from '_api/catItems';
-import { setCatItems, addCatItem, removeCatItem } from '_actions/catItems';
+import { postCatItem, getCatItems, deleteCatItem, updateCatItem } from '_api/catItems';
+import { setCatItems, addCatItem, removeCatItem, updateCateringItem } from '_actions/catItems';
 
 import { dispatchError } from '_utils/api';
 
@@ -34,3 +34,10 @@ export const attemptGetCatItems = () => dispatch =>
     })
     .catch(dispatchError(dispatch));
 
+
+export const attemptToUpdateCateringItem = info => dispatch => 
+    updateCatItem(info)
+    .then(data => {
+      dispatch(updateCateringItem({id:info.id, name:info.name, description:info.description, price:info.price, category:info.category}))
+    })
+    .catch(dispatchError(dispatch))
