@@ -10,14 +10,14 @@ import Column from 'react-bulma-companion/lib/Column';
 
 import Cateringlist from "../../organisms/CateringList"
 
-import { attemptGetItems } from "_thunks/items";
+import { attemptGetCatItems } from "_thunks/catItems";
 
 export default function Orders() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        dispatch(attemptGetItems())
+        dispatch(attemptGetCatItems())
         .catch(R.identity)
         .then(() => setLoading(false));
     }, [dispatch]);

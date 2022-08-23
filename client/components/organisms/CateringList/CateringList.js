@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Dropdown from "react-bootstrap/Dropdown";
+import R from 'ramda'
 
 import {
   File,
@@ -24,26 +26,31 @@ import { attemptAddItem } from "_thunks/items";
 import useKeyPress from "_hooks/useKeyPress";
 
 export default function AddTodo() {
+  const { catItems } = useSelector(R.pick(["catItems"]));
+  const entreeItems = catItems.filter(item =>{
+    if(item.category === "Entree"){
+      return item
+    }
+  })
+  const appsItems = catItems.filter(item =>{
+    if(item.category === "Appetizer"){
+      return item
+    }
+  })
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState("");
 
   return (
     <Box className="general-profile">
-      <Title size="3">Appitizers</Title>
+      <Title size="3">Appetizers</Title>
       <hr className="separator" />
       <Container>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <CateringMenuList />
+        <CateringMenuList items={appsItems} />
+      </Container>
+      <Title size="3">Entrees</Title>
+      <hr className="separator" />
+      <Container>
+        <CateringMenuList items={entreeItems} />
       </Container>
     </Box>
   );

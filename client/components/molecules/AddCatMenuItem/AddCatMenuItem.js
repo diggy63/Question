@@ -111,7 +111,7 @@ export default function AddTodo() {
               </Dropdown.Trigger>
               <Dropdown.Menu id="dropdown-menu" role="menu">
                 <Dropdown.Content>
-                  <Dropdown.Item value="Appitizer" onClick={changeCategory}>Apptizer</Dropdown.Item>
+                  <Dropdown.Item value="Appetizer" onClick={changeCategory}>Appetizer</Dropdown.Item>
                   <Dropdown.Item value="Entree" onClick={changeCategory}>
                     Entree
                   </Dropdown.Item>
