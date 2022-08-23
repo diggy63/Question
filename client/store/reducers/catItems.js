@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import R from 'ramda';
 
 import {
-  ADD_CATITEM, SET_CATITEMS
+  ADD_CATITEM, SET_CATITEMS, REMOVE_CATITEM,
 } from '_actions/catItems';
 
 export function catItem(state = {
@@ -24,6 +24,7 @@ export function catItem(state = {
   }
 
   export default function items(state = [], action) {
+    console.log("action",action)
     const index = R.findIndex(R.propEq('id', action.id), state);
     const updatedAtIndex = { $splice: [[index, 1, catItem(state[index], action)]] };
   
@@ -32,6 +33,8 @@ export function catItem(state = {
         return update(state, { $set: action.catItems });
       case ADD_CATITEM:
         return update(state, { $push: [catItem(undefined, action)] });
+      case REMOVE_CATITEM:
+        return update(state, {$splice: [[index,1]]})
       default:
         return state;
     }

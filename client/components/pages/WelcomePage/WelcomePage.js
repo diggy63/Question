@@ -11,12 +11,6 @@ export default function WelcomePage() {
   const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
 
-  useEffect(() => {
-    if (!R.isEmpty(user)) {
-      dispatch(push('/home'));
-    }
-  }, [dispatch, user]);
-
   return (
     <div className="welcome-page page">
       <Section>

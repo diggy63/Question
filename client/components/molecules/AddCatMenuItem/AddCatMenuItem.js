@@ -15,24 +15,35 @@ import {
   Field,
   Label,
   Control,
+  Dropdown,
 } from "react-bulma-companion";
 
 import { attemptAddCatItem } from "_thunks/catItems";
 import useKeyPress from "_hooks/useKeyPress";
 
 export default function AddTodo() {
+  const [isToggle, setIsToggle] = useState(false);
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState("");
   const [text, setText] = useState({
     name: "",
     description: "",
-    price: '',
-    category:'',
+    price: "",
+    category: "Category",
   });
 
+  const changeToggle = () => {
+    setIsToggle(!isToggle)
+  }
+
+  const changeCategory = (e) =>{
+    setText({...text,category: e.target.innerHTML})
+    changeToggle()
+  }
+
   const handleAddTodo = () => {
-      dispatch(attemptAddCatItem(text));
-      setText({ name: "", description: "", price: "", category:"" });
+    dispatch(attemptAddCatItem(text));
+    setText({ name: "", description: "", price: "", category: "Category" });
   };
 
   useKeyPress("Enter", handleAddTodo);
@@ -40,7 +51,6 @@ export default function AddTodo() {
   function updateText(e) {
     setText({ ...text, [e.target.name]: e.target.value });
   }
-
 
   return (
     <Box className="general-profile">
@@ -50,8 +60,9 @@ export default function AddTodo() {
         <Columns>
           <Column size="2">
             <Field>
-              <Label htmlFor="item-name" className='Label'>
-                Item Name</Label>
+              <Label htmlFor="item-name" className="Label">
+                Item Name
+              </Label>
               <Control>
                 <Input
                   type="text"
@@ -64,18 +75,18 @@ export default function AddTodo() {
             </Field>
           </Column>
           <Column size="2">
-          <Field>
-              <Label htmlFor="item-name" className='Label'>
+            <Field>
+              <Label htmlFor="item-name" className="Label">
                 Price
-                </Label>
+              </Label>
               <Control>
-            <Input
-              placeholder="Price"
-              name="price"
-              value={text.price}
-              onChange={updateText}
-            />
-            </Control>
+                <Input
+                  placeholder="Price"
+                  name="price"
+                  value={text.price}
+                  onChange={updateText}
+                />
+              </Control>
             </Field>
           </Column>
         </Columns>
@@ -90,13 +101,34 @@ export default function AddTodo() {
           </Column>
         </Columns>
         <Columns>
-        <Column size="3">
-            <Textarea
+          <Column size="3">
+          <div style={{ minHeight: 50, }} >
+            <Dropdown active={isToggle}>
+              <Dropdown.Trigger>
+                <Button aria-haspopup="true" aria-controls="dropdown-menu" onClick={changeToggle}>
+                  <span>{text.category}</span>
+                </Button>
+              </Dropdown.Trigger>
+              <Dropdown.Menu id="dropdown-menu" role="menu">
+                <Dropdown.Content>
+                  <Dropdown.Item value="Appitizer" onClick={changeCategory}>Apptizer</Dropdown.Item>
+                  <Dropdown.Item value="Entree" onClick={changeCategory}>
+                    Entree
+                  </Dropdown.Item>
+                  <Dropdown.Item value="Sides" onClick={changeCategory}>
+                    Sides
+                  </Dropdown.Item>
+                </Dropdown.Content>
+              </Dropdown.Menu>
+            </Dropdown>
+
+            {/* <Textarea
               placeholder="Catergory"
               name="category"
               value={text.category}
               onChange={updateText}
-            />
+            /> */}
+            </div>
           </Column>
           <Column size="1">
             <Button color="success" onClick={handleAddTodo} fullwidth>

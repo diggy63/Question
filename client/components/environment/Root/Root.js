@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Main from '_environment/Main';
 

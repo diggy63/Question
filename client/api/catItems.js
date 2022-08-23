@@ -14,3 +14,9 @@ export const getCatItems = () =>
       .then(handleSuccess)
       .catch(handleError);
 
+export const deleteCatItem = info =>
+    request.delete('/api/catitems')
+      .send(info)
+      .then(handleSuccess)
+      .catch(handleError);
+
